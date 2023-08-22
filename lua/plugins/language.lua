@@ -38,6 +38,9 @@ return {
       -- Additional lua configuration for nvim
       'folke/neodev.nvim',
     },
+    opts = {
+      servers = { 'nil_ls', 'lua_ls', 'tsserver', 'eslint', 'pyright' },
+    },
     config = lsp_zero.config,
   },
 

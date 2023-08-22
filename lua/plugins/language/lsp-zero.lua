@@ -44,15 +44,13 @@ local function on_attach(_, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 end
 
-local servers = { 'nil_ls', 'lua_ls', 'tsserver', 'eslint', 'pyright' }
-
 function M.config(_, opts)
   -- Setup neovim lua configuration
   require('neodev').setup()
 
   local lsp = require('lsp-zero').preset(opts)
 
-  lsp.setup_servers(servers)
+  lsp.setup_servers(opts.servers)
   lsp.on_attach(on_attach)
   lsp.setup()
 
