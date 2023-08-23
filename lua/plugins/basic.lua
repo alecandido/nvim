@@ -23,11 +23,6 @@ return {
   'svermeulen/vim-cutlass',
   'svermeulen/vim-yoink',
 
-  {
-    'nvim-telescope/telescope.nvim', tag = '0.1.2',
-    dependencies = { 'nvim-lua/plenary.nvim' }
-  },
-  
   -- Comments
   {
     'numToStr/Comment.nvim',
