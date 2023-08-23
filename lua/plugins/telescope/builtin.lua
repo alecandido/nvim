@@ -23,7 +23,7 @@ M.keys = {
   },
   {
     "<leader>gf",
-    function() require('telescope.builtin').git_status() end,
+    function() require('telescope.builtin').git_files() end,
     desc = "Find [G}it [F]iles"
   },
   {
