@@ -16,7 +16,7 @@ local function on_attach(client, bufnr)
 
   -- See `:help K` for why this keymap
   nmap('<A-k>', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<A-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  nmap('<A-K>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
 
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')

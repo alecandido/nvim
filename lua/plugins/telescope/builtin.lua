@@ -2,6 +2,11 @@ local M = {}
 
 M.keys = {
   {
+    "<leader>f<space>",
+    function() require('telescope.builtin').find_files() end,
+    desc = "[F]ind[ ]a telescope"
+  },
+  {
     "<leader>ff",
     function() require('telescope.builtin').find_files() end,
     desc = "[F]ind [F]iles"
@@ -40,6 +45,18 @@ M.keys = {
     "<leader>fh",
     function() require('telescope.builtin').help_tags() end,
     desc = "[F]ind [H]elp tags"
+  },
+}
+
+M.opts = {
+  extensions = {
+    undo = {
+      side_by_side = true,
+      layout_strategy = "vertical",
+      layout_config = {
+        preview_height = 0.8,
+      },
+    },
   },
 }
 
