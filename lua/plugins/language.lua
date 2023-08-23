@@ -35,6 +35,9 @@ return {
       'hrsh7th/cmp-nvim-lsp',
       'L3MON4D3/LuaSnip',
 
+      -- Autoformat
+      'lukas-reineke/lsp-format.nvim',
+
       -- Additional lua configuration for nvim
       'folke/neodev.nvim',
     },

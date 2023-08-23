@@ -1,7 +1,7 @@
 local M = {}
 
 --  This function gets run when an LSP connects to a particular buffer.
-local function on_attach(_, bufnr)
+local function on_attach(client, bufnr)
   local function map(mode, keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
@@ -42,6 +42,10 @@ local function on_attach(_, bufnr)
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
+  -- and format on save
+  if client.supports_method('textDocument/formatting') then
+    require('lsp-format').on_attach(client)
+  end
 end
 
 function M.config(_, opts)
