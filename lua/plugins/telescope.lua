@@ -17,7 +17,12 @@ return {
           return vim.fn.executable 'make' == 1
         end,
       },
+      "debugloop/telescope-undo.nvim",
     },
     keys = telescope.keys,
+    config = function(_, opts)
+      require('telescope').setup(opts)
+      pcall(require('telescope').load_extension, 'fzf')
+    end,
   },
 }

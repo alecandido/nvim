@@ -2,6 +2,7 @@ local parent = ...
 
 local lsp_zero = require(parent .. ".lsp-zero")
 local nvim_cmp = require(parent .. ".nvim-cmp")
+local treesitter = require(parent .. ".treesitter")
 local trouble = require(parent .. ".trouble")
 
 return {
@@ -11,7 +12,8 @@ return {
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
-    build = ":TSUpdate"
+    build = ":TSUpdate",
+    opts = treesitter.opts,
   },
   'simrat39/symbols-outline.nvim',
 
