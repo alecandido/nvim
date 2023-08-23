@@ -1,7 +1,14 @@
--- Pure UI
+-- Interface improvements
 
-return { 
-  { 'shaunsingh/nord.nvim', priority=1000 },
+local parent          = ...
+
+local barbar          = require(parent .. ".barbar")
+local gitsigns        = require(parent .. ".gitsigns")
+local symbols_outline = require(parent .. ".symbols-outline")
+local headlines       = require(parent .. "headlines")
+
+return {
+  { 'shaunsingh/nord.nvim', priority = 1000 },
   "rebelot/kanagawa.nvim",
   "navarasu/onedark.nvim",
 
@@ -11,21 +18,7 @@ return {
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   {
     'lewis6991/gitsigns.nvim',
-    opts = {
-      -- See `:help gitsigns.txt`
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-      on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
-        vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
-        vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
-      end,
-    },
+    opts = gitsigns.opts,
   },
 
 
@@ -42,19 +35,7 @@ return {
   {
     'lukas-reineke/headlines.nvim',
     dependencies = "nvim-treesitter/nvim-treesitter",
-    opts = {
-      markdown = {
-        headline_highlights = {
-          "Headline1",
-          "Headline2",
-          "Headline3",
-          "Headline4",
-          "Headline5",
-          "Headline6",
-        },
-        fat_headlines = false,
-      },
-    },
+    opts = headlines.opts,
   },
 
   -- Set lualine as statusline
@@ -76,19 +57,7 @@ return {
       'lewis6991/gitsigns.nvim',
       'nvim-tree/nvim-web-devicons',
     },
-    keys = {
-      { '<A-,>', '<Cmd>BufferPrevious<CR>' },
-      { '<A-.>', '<Cmd>BufferNext<CR>' },
-      { '<A-<>', '<Cmd>BufferMovePrevious<CR>' },
-      { '<A->>', '<Cmd>BufferMoveNext<CR>' },
-      { '<A-1>', '<Cmd>BufferGoto 1<CR>' },
-      { '<A-2>', '<Cmd>BufferGoto 2<CR>' },
-      { '<A-3>', '<Cmd>BufferGoto 3<CR>' },
-      { '<A-4>', '<Cmd>BufferGoto 4<CR>' },
-      { '<A-0>', '<Cmd>BufferLast<CR>' },
-      { '<A-w>', '<Cmd>BufferClose<CR>' },
-      { '<A-p>', '<Cmd>BufferPick<CR>' },
-    },
+    keys = barbar.keys,
     lazy = false,
     version = '^1.0.0',
   },
@@ -102,50 +71,16 @@ return {
       "MunifTanjim/nui.nvim",
     },
     keys = {
-      { '<A-t>', '<Cmd>Neotree toggle<CR>' },
-      { '<A-g>s', '<Cmd>Neotree git_status float<CR>' },
+      { "<leader>tt", '<Cmd>Neotree toggle<CR>', desc = "[T]oggle neo-[T]ree" },
     },
   },
 
   {
     'simrat39/symbols-outline.nvim',
-    keys = {
-      { '<A-s>', '<Cmd>SymbolsOutline<CR>' },
-    },
-    config = function(plugin, opts)
-        require("symbols-outline").setup(opts)
-      end,
-    opts = {
-      symbols = {
-        File = { icon = " ", hl = "@text.uri" },
-        Module = { icon = " ", hl = "@namespace" },
-        Namespace = { icon = "⁙", hl = "@namespace" },
-        Package = { icon = "", hl = "@namespace" },
-        Class = { icon = "𝓒", hl = "@type" },
-        Method = { icon = "ƒ", hl = "@method" },
-        Property = { icon = "", hl = "@method" },
-        Field = { icon = " ", hl = "@field" },
-        Constructor = { icon = "", hl = "@constructor" },
-        Enum = { icon = " ", hl = "@type" },
-        Interface = { icon = " ", hl = "@type" },
-        Function = { icon = "", hl = "@function" },
-        Variable = { icon = "", hl = "@constant" },
-        Constant = { icon = "", hl = "@constant" },
-        String = { icon = "𝓐", hl = "@string" },
-        Number = { icon = "#", hl = "@number" },
-        Boolean = { icon = "⊨", hl = "@boolean" },
-        Array = { icon = " ", hl = "@constant" },
-        Object = { icon = "⦿", hl = "@type" },
-        Key = { icon = "→", hl = "@type" },
-        Null = { icon = "", hl = "@type" },
-        EnumMember = { icon = " ", hl = "@field" },
-        Struct = { icon = " ", hl = "@type" },
-        Event = { icon = "", hl = "@type" },
-        Operator = { icon = "+", hl = "@operator" },
-        TypeParameter = { icon = "𝙏", hl = "@parameter" },
-        Component = { icon = " ", hl = "@function" },
-        Fragment = { icon = " ", hl = "@constant" },
-      },
-    }
+    keys = symbols_outline.keys,
+    config = function(_, opts)
+      require("symbols-outline").setup(opts)
+    end,
+    opts = symbols_outline.opts,
   }
 }
