@@ -5,7 +5,7 @@ local parent          = ...
 local barbar          = require(parent .. ".barbar")
 local gitsigns        = require(parent .. ".gitsigns")
 local symbols_outline = require(parent .. ".symbols-outline")
-local headlines       = require(parent .. "headlines")
+local headlines       = require(parent .. ".headlines")
 
 return {
   { 'shaunsingh/nord.nvim', priority = 1000 },
