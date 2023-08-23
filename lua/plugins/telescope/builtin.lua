@@ -3,7 +3,7 @@ local M = {}
 M.keys = {
   {
     "<leader>f<space>",
-    function() require('telescope.builtin').find_files() end,
+    function() require('telescope.builtin').builtin() end,
     desc = "[F]ind[ ]a telescope"
   },
   {
