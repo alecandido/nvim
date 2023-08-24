@@ -2,30 +2,28 @@ return {
   -- Keybindings
   "tpope/vim-repeat",
   "tpope/vim-rsi",
-  'tpope/vim-surround',
+  "tpope/vim-surround",
   -- Control case
-  'tpope/vim-abolish',
+  "tpope/vim-abolish",
 
   -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
+  "tpope/vim-sleuth",
 
   -- Unix
   "tpope/vim-eunuch",
 
   -- Git
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
-  'tpope/vim-git',
-  'junegunn/gv.vim',
+  "tpope/vim-fugitive",
+  "tpope/vim-git",
 
   -- Copy, cut, and paste
-  'svermeulen/vim-subversive',
-  'svermeulen/vim-cutlass',
-  'svermeulen/vim-yoink',
+  "svermeulen/vim-subversive",
+  "svermeulen/vim-cutlass",
+  "svermeulen/vim-yoink",
 
   -- Comments
   {
-    'numToStr/Comment.nvim',
+    "numToStr/Comment.nvim",
     lazy = false,
     init = function()
       require("Comment").setup()
