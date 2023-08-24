@@ -1,7 +1,7 @@
 local M = {}
 
 M.init = function()
-  local gid = vim.api.nvim_create_augroup("FormatAutogroup")
+  local gid = vim.api.nvim_create_augroup("FormatAutogroup", {})
   vim.api.nvim_create_autocmd(
     "BufWritePost",
     {
@@ -16,13 +16,19 @@ end
 M.opts = {
   filetype = {
     lua = {
-      require("formatter.filetypes.lua").stylua,
+      function()
+        return require("formatter.filetypes.lua").stylua()
+      end,
     },
 
     ["*"] = {
-      require("formatter.filetypes.any").remove_trailing_whitespace
+      function()
+        return require("formatter.filetypes.any").remove_trailing_whitespace()
+      end,
     },
   },
 }
+
+M.event = "BufWritePost"
 
 return M

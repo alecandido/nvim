@@ -81,6 +81,7 @@ return {
     "mhartington/formatter.nvim",
     opts = formatter.opts,
     init = formatter.init,
+    event = formatter.event,
   },
 
   -- Debug
