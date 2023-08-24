@@ -10,7 +10,7 @@ function M.map(mode, keys, func, opts)
 end
 
 function M.nmap(...)
-  M.map('n', ...)
+  M.map("n", ...)
 end
 
 return M

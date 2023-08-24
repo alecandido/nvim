@@ -1,25 +1,25 @@
 local gid = vim.api.nvim_create_augroup("nord-theme-overrides", {})
 
 local polar_night = { "#2e3440", "#3b4252", "#434c5e", "#4c566a" }
-local aurora = {"#bf616a", "#d08770", "#ebcb8b", "#a3be8c", "#b48ead" }
+local aurora = { "#bf616a", "#d08770", "#ebcb8b", "#a3be8c", "#b48ead" }
 
 vim.api.nvim_create_autocmd("ColorScheme", {
   pattern = "nord",
   group = gid,
   callback = function(ev)
-    vim.api.nvim_set_hl(0, "Normal", { })
+    vim.api.nvim_set_hl(0, "Normal", {})
     -- Swap foreground and background color
     vim.api.nvim_set_hl(0, "Visual", { reverse = true })
     vim.api.nvim_set_hl(0, "Folded", { italic = true })
     -- Low contrast for auxiliar elements
-    vim.api.nvim_set_hl(0, "NonText", { fg=polar_night[3] })
-    vim.api.nvim_set_hl(0, "IndentBlanklineChar", { fg=polar_night[4] })
-    vim.api.nvim_set_hl(0, "IndentBlanklineContextChar", { fg=aurora[2] })
+    vim.api.nvim_set_hl(0, "NonText", { fg = polar_night[3] })
+    vim.api.nvim_set_hl(0, "IndentBlanklineChar", { fg = polar_night[4] })
+    vim.api.nvim_set_hl(0, "IndentBlanklineContextChar", { fg = aurora[2] })
     -- Set various backgrounds to default
-    vim.api.nvim_set_hl(0, "FoldColumn", { })
-    vim.api.nvim_set_hl(0, "VertColumn", { })
-    vim.api.nvim_set_hl(0, "SignColumn", { })
-  end
+    vim.api.nvim_set_hl(0, "FoldColumn", {})
+    vim.api.nvim_set_hl(0, "VertColumn", {})
+    vim.api.nvim_set_hl(0, "SignColumn", {})
+  end,
 })
 
 -- configure: https://www.nordtheme.com/docs/ports/vim/configuration

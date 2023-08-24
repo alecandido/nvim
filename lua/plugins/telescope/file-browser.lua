@@ -9,8 +9,10 @@ end
 M.keys = {
   {
     "<leader>fb",
-    function() require("telescope").extensions.file_browser.file_browser() end,
-    desc = "[F]ile [B]rowser"
+    function()
+      require("telescope").extensions.file_browser.file_browser()
+    end,
+    desc = "[F]ile [B]rowser",
   },
 }
 

@@ -3,7 +3,7 @@ local M = {}
 M.build = "make"
 
 M.cond = function()
-  return vim.fn.executable "make" == 1
+  return vim.fn.executable("make") == 1
 end
 
 M.opts = {}

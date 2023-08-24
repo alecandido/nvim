@@ -9,8 +9,10 @@ end
 M.keys = {
   {
     "<leader>cd",
-    function() require("telescope").extensions.zoxide.list() end,
-    desc = "[C]hange [D]irectory"
+    function()
+      require("telescope").extensions.zoxide.list()
+    end,
+    desc = "[C]hange [D]irectory",
   },
 }
 

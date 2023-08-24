@@ -2,15 +2,12 @@ local M = {}
 
 M.init = function()
   local gid = vim.api.nvim_create_augroup("FormatAutogroup", {})
-  vim.api.nvim_create_autocmd(
-    "BufWritePost",
-    {
-      group = gid,
-      pattern = "*",
-      command = "FormatWrite",
-      desc = "Format on save, using 'formatter.nvim'"
-    }
-  )
+  vim.api.nvim_create_autocmd("BufWritePost", {
+    group = gid,
+    pattern = "*",
+    command = "FormatWrite",
+    desc = "Format on save, using 'formatter.nvim'",
+  })
 end
 
 M.opts = {

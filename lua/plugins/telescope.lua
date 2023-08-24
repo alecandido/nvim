@@ -43,7 +43,11 @@ return {
 
   {
     "jvgrootveld/telescope-zoxide",
-    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim", "nvim-lua/popup.nvim" },
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-lua/popup.nvim",
+    },
     config = zoxide.config,
     keys = zoxide.keys,
   },
@@ -67,5 +71,5 @@ return {
     dependencies = { "nvim-telescope/telescope.nvim" },
     config = media_files.config,
     event = media_files.event,
-  }
+  },
 }

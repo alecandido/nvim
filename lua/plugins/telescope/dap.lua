@@ -9,18 +9,24 @@ end
 M.keys = {
   {
     "<leader>dc",
-    function() require("telescope").extensions.dap.commands({}) end,
-    desc = "[D]ebug [C]ommands"
+    function()
+      require("telescope").extensions.dap.commands({})
+    end,
+    desc = "[D]ebug [C]ommands",
   },
   {
     "<leader>db",
-    function() require("telescope").extensions.dap.list_breakpoints({}) end,
-    desc = "[D]ebug [B]reakpoints"
+    function()
+      require("telescope").extensions.dap.list_breakpoints({})
+    end,
+    desc = "[D]ebug [B]reakpoints",
   },
   {
     "<leader>dv",
-    function() require("telescope").extensions.dap.variables({}) end,
-    desc = "[D]ebug [V]ariables"
+    function()
+      require("telescope").extensions.dap.variables({})
+    end,
+    desc = "[D]ebug [V]ariables",
   },
 }
 

@@ -14,8 +14,10 @@ end
 M.keys = {
   {
     "<leader>fu",
-    function() require("telescope").extensions.undo.undo() end,
-    desc = "[F]ind [U]ndo"
+    function()
+      require("telescope").extensions.undo.undo()
+    end,
+    desc = "[F]ind [U]ndo",
   },
 }
 
