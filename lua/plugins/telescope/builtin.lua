@@ -53,16 +53,15 @@ M.keys = {
   },
 }
 
-M.opts = {
-  extensions = {
-    undo = {
-      side_by_side = true,
-      layout_strategy = "vertical",
-      layout_config = {
-        preview_height = 0.6,
-      },
-    },
-  },
-}
+M.opts = {}
+
+M.merge = function(opts, ...)
+  opts.extensions = { ... }
+  return opts
+end
+
+M.config = function(_, opts)
+  require("telescope").setup(opts)
+end
 
 return M

@@ -3,28 +3,40 @@
 local parent = ...
 
 local telescope = require(parent .. ".builtin")
+local fzf = require(parent .. ".fzf")
+local undo = require(parent .. ".undo")
+local media_files = require(parent .. ".media-files")
 
 return {
   {
-    'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
+    "nvim-telescope/telescope.nvim",
+    branch = "0.1.x",
     dependencies = {
-      'nvim-lua/plenary.nvim',
-      {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'make',
-        cond = function()
-          return vim.fn.executable 'make' == 1
-        end,
-      },
-      "debugloop/telescope-undo.nvim",
+      "nvim-lua/plenary.nvim",
     },
     keys = telescope.keys,
-    config = function(_, opts)
-      require('telescope').setup(opts)
-      pcall(require('telescope').load_extension, 'fzf')
-      require("telescope").load_extension("undo")
-    end,
-    opts = telescope.opts,
+    config = telescope.config,
+    opts = telescope.merge(telescope.opts, {
+      fzf = fzf.opts,
+      undo = undo.opts,
+      media_files = media_files.opts,
+    }),
   },
+
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build = fzf.build,
+    cond = fzf.cond,
+    init = fzf.init,
+  },
+
+  {
+    "debugloop/telescope-undo.nvim",
+    init = undo.init,
+  },
+
+  {
+    "nvim-telescope/telescope-media-files.nvim",
+    init = media_files.init,
+  }
 }
