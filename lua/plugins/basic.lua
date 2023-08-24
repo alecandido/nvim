@@ -1,32 +1,43 @@
 return {
-  -- Keybindings
-  "tpope/vim-repeat",
-  "tpope/vim-rsi",
-  "tpope/vim-surround",
-  -- Control case
-  "tpope/vim-abolish",
+	-- Keybindings
+	"tpope/vim-repeat",
+	"tpope/vim-rsi",
+	"tpope/vim-surround",
+	-- Control case
+	"tpope/vim-abolish",
 
-  -- Detect tabstop and shiftwidth automatically
-  "tpope/vim-sleuth",
+	-- Detect tabstop and shiftwidth automatically
+	"tpope/vim-sleuth",
 
-  -- Unix
-  "tpope/vim-eunuch",
+	-- Copy, cut, and paste
+	"svermeulen/vim-subversive",
+	"svermeulen/vim-cutlass",
+	"svermeulen/vim-yoink",
 
-  -- Git
-  "tpope/vim-fugitive",
-  "tpope/vim-git",
+	-- Comments
+	{
+		"numToStr/Comment.nvim",
+		lazy = false,
+		init = function()
+			require("Comment").setup()
+		end
+	},
 
-  -- Copy, cut, and paste
-  "svermeulen/vim-subversive",
-  "svermeulen/vim-cutlass",
-  "svermeulen/vim-yoink",
+	-- Unix
+	"tpope/vim-eunuch",
 
-  -- Comments
-  {
-    "numToStr/Comment.nvim",
-    lazy = false,
-    init = function()
-      require("Comment").setup()
-    end
-  },
+	-- Git
+	"tpope/vim-fugitive",
+	"tpope/vim-git",
+
+	-- GitHub
+	{
+		"pwntester/octo.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+			"nvim-tree/nvim-web-devicons",
+		},
+		cmd = "Octo",
+	}
 }
