@@ -2,16 +2,17 @@ return {
 	-- Keybindings
 	"tpope/vim-repeat",
 	"tpope/vim-rsi",
+
+	-- Substitute
 	"tpope/vim-surround",
+	"svermeulen/vim-subversive",
 	-- Control case
 	"tpope/vim-abolish",
+	-- Copy, cut, and paste
+	"svermeulen/vim-cutlass",
 
 	-- Detect tabstop and shiftwidth automatically
 	"tpope/vim-sleuth",
-
-	-- Copy, cut, and paste
-	"svermeulen/vim-subversive",
-	"svermeulen/vim-cutlass",
 
 	-- Comments
 	{
@@ -37,9 +38,7 @@ return {
 			"nvim-telescope/telescope.nvim",
 			"nvim-tree/nvim-web-devicons",
 		},
-		config = function()
-			require "octo".setup()
-		end,
+		config = true,
 		cmd = "Octo",
 	}
 }
