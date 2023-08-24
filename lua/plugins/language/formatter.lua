@@ -10,21 +10,18 @@ M.init = function()
   })
 end
 
-M.opts = {
-  filetype = {
-    lua = {
-      function()
-        return require("formatter.filetypes.lua").stylua()
-      end,
-    },
+M.config = function(_, opts)
+  opts.filetype = {
+    lua = { require("formatter.filetypes.lua").stylua },
+    nix = { require("formatter.filetypes.nix").alejandra },
 
-    ["*"] = {
-      function()
-        return require("formatter.filetypes.any").remove_trailing_whitespace()
-      end,
-    },
-  },
-}
+    ["*"] = require("formatter.filetypes.any"),
+  }
+
+  require("formatter").setup(opts)
+end
+
+M.opts = {}
 
 M.event = "BufWritePost"
 

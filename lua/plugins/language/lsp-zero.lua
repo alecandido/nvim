@@ -34,9 +34,14 @@ local function on_attach(client, bufnr)
   end, "[W]orkspace [L]ist Folders")
 
   -- Format on save
-  if client.supports_method("textDocument/formatting") then
-    require("lsp-format").on_attach(client)
-  end
+  -- if client.supports_method("textDocument/formatting") then
+  --   -- TODO: it might get in conflict with other formatters, which are usually
+  --   -- better, for the time being let's avoid
+  --   -- for debugging: it happened with lua, stylua + lua-language-server, that they
+  --   -- were going in loop on save
+  --
+  --   require("lsp-format").on_attach(client)
+  -- end
 end
 
 function M.config(_, opts)
