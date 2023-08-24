@@ -80,6 +80,10 @@ return {
     'mfussenegger/nvim-dap',
     keys = {},
   },
+  {
+    "rcarriga/nvim-dap-ui",
+    requires = { "mfussenegger/nvim-dap" }
+  },
 
   -- Diagnostics
   {
@@ -99,4 +103,12 @@ return {
   -- Bunch of syntaxes for those languages which I do not bother installing a language
   -- server for
   "sheerun/vim-polyglot",
+
+  -- Neovim specific
+  {
+    'folke/neodev.nvim',
+    opts = {
+      library = { plugins = { "nvim-dap-ui" }, types = true }
+    },
+  }
 }
