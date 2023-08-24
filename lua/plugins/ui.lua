@@ -8,12 +8,12 @@ local symbols_outline = require(parent .. ".symbols-outline")
 local headlines       = require(parent .. ".headlines")
 
 return {
-  { 'shaunsingh/nord.nvim', priority = 1000 },
-  "rebelot/kanagawa.nvim",
-  "navarasu/onedark.nvim",
+  { 'shaunsingh/nord.nvim',  lazy = false, priority = 1000 },
+  { "rebelot/kanagawa.nvim", lazy = true },
+  { "navarasu/onedark.nvim", lazy = true },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',  opts = {} },
 
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   {

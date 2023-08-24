@@ -7,8 +7,16 @@ M.opts = {
   },
 }
 
-M.init = function()
+M.config = function(_, _)
   require("telescope").load_extension("undo")
 end
+
+M.keys = {
+  {
+    "<leader>fu",
+    function() require("telescope").extensions.undo.undo() end,
+    desc = "[F]ind [U]ndo"
+  },
+}
 
 return M

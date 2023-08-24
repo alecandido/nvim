@@ -13,30 +13,33 @@ return {
     branch = "0.1.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
+
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = fzf.build,
+        cond = fzf.cond,
+        config = fzf.config,
+      },
     },
-    keys = telescope.keys,
     config = telescope.config,
     opts = telescope.merge(telescope.opts, {
       fzf = fzf.opts,
       undo = undo.opts,
       media_files = media_files.opts,
     }),
-  },
-
-  {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    build = fzf.build,
-    cond = fzf.cond,
-    init = fzf.init,
+    cmd = telescope.cmd,
+    keys = telescope.keys,
   },
 
   {
     "debugloop/telescope-undo.nvim",
-    init = undo.init,
+    config = undo.config,
+    keys = undo.keys,
   },
 
   {
     "nvim-telescope/telescope-media-files.nvim",
-    init = media_files.init,
+    config = media_files.config,
+    event = media_files.event,
   }
 }

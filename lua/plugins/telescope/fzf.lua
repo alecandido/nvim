@@ -8,7 +8,7 @@ end
 
 M.opts = {}
 
-M.init = function()
+M.config = function(_, _)
   require("telescope").load_extension("fzf")
 end
 

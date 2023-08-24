@@ -1,5 +1,18 @@
 local M = {}
 
+M.opts = {}
+
+M.merge = function(opts, ...)
+  opts.extensions = { ... }
+  return opts
+end
+
+M.config = function(_, opts)
+  require("telescope").setup(opts)
+end
+
+M.cmd = "Telescope"
+
 M.keys = {
   {
     "<leader>f<space>",
@@ -46,22 +59,6 @@ M.keys = {
     function() require('telescope.builtin').help_tags() end,
     desc = "[F]ind [H]elp tags"
   },
-  {
-    "<leader>fu",
-    function() require("telescope").extensions.undo.undo() end,
-    desc = "[F]ind [U]ndo"
-  },
 }
-
-M.opts = {}
-
-M.merge = function(opts, ...)
-  opts.extensions = { ... }
-  return opts
-end
-
-M.config = function(_, opts)
-  require("telescope").setup(opts)
-end
 
 return M
