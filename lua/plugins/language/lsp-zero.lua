@@ -2,16 +2,10 @@ local M = {}
 
 --  This function gets run when an LSP connects to a particular buffer.
 local function on_attach(client, bufnr)
-  local function map(mode, keys, func, desc)
-    if desc then
-      desc = 'LSP: ' .. desc
-    end
+  local maplib = require("lib.map")
 
-    vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = desc })
-  end
-
-  local function nmap(...)
-    map('n', ...)
+  local function nmap(keys, func, desc)
+    maplib.nmap(keys, func, { bufnr = bufnr, desc = desc, prefix = "LSP: " })
   end
 
   -- See `:help K` for why this keymap
@@ -36,11 +30,7 @@ local function on_attach(client, bufnr)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
 
-  -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-    vim.lsp.buf.format()
-  end, { desc = 'Format current buffer with LSP' })
-  -- and format on save
+  -- Format on save
   if client.supports_method('textDocument/formatting') then
     require('lsp-format').on_attach(client)
   end
