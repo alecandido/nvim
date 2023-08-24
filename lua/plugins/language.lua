@@ -1,5 +1,6 @@
 local parent = ...
 
+local formatter = require(parent .. ".formatter")
 local lsp_zero = require(parent .. ".lsp-zero")
 local nvim_cmp = require(parent .. ".nvim-cmp")
 local treesitter = require(parent .. ".treesitter")
@@ -73,6 +74,13 @@ return {
       'hrsh7th/cmp-cmdline',
     },
     config = nvim_cmp.config,
+  },
+
+  -- Formatting, complementary to the LSP (when not available)
+  {
+    "mhartington/formatter.nvim",
+    opts = formatter.opts,
+    init = formatter.init,
   },
 
   -- Debug
