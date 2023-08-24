@@ -4,6 +4,7 @@ local parent = ...
 
 local telescope = require(parent .. ".builtin")
 local fzf = require(parent .. ".fzf")
+local file_browser = require(parent .. ".file-browser")
 local undo = require(parent .. ".undo")
 local media_files = require(parent .. ".media-files")
 
@@ -32,13 +33,22 @@ return {
   },
 
   {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+    config = file_browser.config,
+    keys = file_browser.keys,
+  },
+
+  {
     "debugloop/telescope-undo.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" },
     config = undo.config,
     keys = undo.keys,
   },
 
   {
     "nvim-telescope/telescope-media-files.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" },
     config = media_files.config,
     event = media_files.event,
   }

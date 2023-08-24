@@ -25,9 +25,9 @@ M.keys = {
     desc = "[F]ind [F]iles"
   },
   {
-    "<leader>fb",
+    "<leader>fr",
     function() require('telescope.builtin').buffers() end,
-    desc = "[F]ind open [B]uffer"
+    desc = "[F]ind open buffe[R]"
   },
   {
     "<leader>gs",
