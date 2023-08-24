@@ -7,6 +7,7 @@ local fzf = require(parent .. ".fzf")
 local file_browser = require(parent .. ".file-browser")
 local zoxide = require(parent .. ".zoxide")
 local undo = require(parent .. ".undo")
+local dap = require(parent .. ".dap")
 local media_files = require(parent .. ".media-files")
 
 return {
@@ -52,6 +53,13 @@ return {
     dependencies = { "nvim-telescope/telescope.nvim" },
     config = undo.config,
     keys = undo.keys,
+  },
+
+  {
+    "nvim-telescope/telescope-dap.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-dap", "nvim-treesitter" },
+    config = dap.config,
+    keys = dap.keys,
   },
 
   {
