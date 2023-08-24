@@ -5,7 +5,7 @@ local function on_attach(client, bufnr)
   local maplib = require("lib.map")
 
   local function nmap(keys, func, desc)
-    maplib.nmap(keys, func, { bufnr = bufnr, desc = desc, prefix = "LSP: " })
+    maplib.nmap(keys, func, { buffer = bufnr, desc = desc, prefix = "LSP: " })
   end
 
   -- See `:help K` for why this keymap
