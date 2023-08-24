@@ -5,6 +5,7 @@ local parent = ...
 local telescope = require(parent .. ".builtin")
 local fzf = require(parent .. ".fzf")
 local file_browser = require(parent .. ".file-browser")
+local zoxide = require(parent .. ".zoxide")
 local undo = require(parent .. ".undo")
 local media_files = require(parent .. ".media-files")
 
@@ -37,6 +38,13 @@ return {
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
     config = file_browser.config,
     keys = file_browser.keys,
+  },
+
+  {
+    "jvgrootveld/telescope-zoxide",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim", "nvim-lua/popup.nvim" },
+    config = zoxide.config,
+    keys = zoxide.keys,
   },
 
   {
