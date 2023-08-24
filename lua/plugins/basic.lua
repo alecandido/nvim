@@ -12,7 +12,6 @@ return {
 	-- Copy, cut, and paste
 	"svermeulen/vim-subversive",
 	"svermeulen/vim-cutlass",
-	"svermeulen/vim-yoink",
 
 	-- Comments
 	{
@@ -38,6 +37,9 @@ return {
 			"nvim-telescope/telescope.nvim",
 			"nvim-tree/nvim-web-devicons",
 		},
+		config = function()
+			require "octo".setup()
+		end,
 		cmd = "Octo",
 	}
 }

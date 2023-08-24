@@ -14,16 +14,6 @@ vim.keymap.set('n', 's', '<plug>(SubversiveSubstitute)', { remap = true })
 vim.keymap.set('n', 'ss', '<plug>(SubversiveSubstituteLine)', { remap = true })
 vim.keymap.set('n', 'S', '<plug>(SubversiveSubstituteToEndOfLine)', { remap = true })
 
--- vim-yoink
-vim.g.yoinkIncludeDeleteOperations = 1
-
-
--- nmap <c-n> <plug>(YoinkPostPasteSwapBack)
--- nmap <c-p> <plug>(YoinkPostPasteSwapForward)
-
-vim.keymap.set('n', 'p', '<plug>(YoinkPaste_p)', { remap = true })
-vim.keymap.set('n', 'P', '<plug>(YoinkPaste_P)', { remap = true })
-
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
