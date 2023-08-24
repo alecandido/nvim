@@ -23,6 +23,8 @@ end
 
 M.opts = {}
 
+M.cmd = { "Format", "FormatWrite" }
+
 M.event = "BufWritePost"
 
 return M

@@ -79,9 +79,11 @@ return {
   -- Formatting, complementary to the LSP (when not available)
   {
     "mhartington/formatter.nvim",
+    config = formatter.config,
     opts = formatter.opts,
     init = formatter.init,
     event = formatter.event,
+    cmd = formatter.cmd,
   },
 
   -- Debug
