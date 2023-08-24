@@ -14,4 +14,6 @@ M.keys = {
   { '<A-p>', '<Cmd>BufferPick<CR>' },
 }
 
+M.event = { "BufAdd" }
+
 return M

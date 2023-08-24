@@ -14,4 +14,8 @@ M.opts = {
   },
 }
 
+M.ft = {
+  "markdown",
+}
+
 return M

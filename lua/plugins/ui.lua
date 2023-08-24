@@ -13,7 +13,10 @@ return {
   { "navarasu/onedark.nvim", lazy = true },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  opts = {} },
+  {
+    'folke/which-key.nvim',
+    opts = {},
+  },
 
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   {
@@ -36,6 +39,7 @@ return {
     'lukas-reineke/headlines.nvim',
     dependencies = "nvim-treesitter/nvim-treesitter",
     opts = headlines.opts,
+    ft = headlines.ft,
   },
 
   -- Set lualine as statusline
@@ -58,21 +62,8 @@ return {
       'nvim-tree/nvim-web-devicons',
     },
     keys = barbar.keys,
-    lazy = false,
+    event = barbar.event,
     version = '^1.0.0',
-  },
-
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
-    },
-    keys = {
-      { "<leader>tt", '<Cmd>Neotree toggle<CR>', desc = "[T]oggle neo-[T]ree" },
-    },
   },
 
   {
