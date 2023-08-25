@@ -4,7 +4,6 @@ local parser_path = vim.fn.stdpath("cache") .. "/tree-sitter"
 
 M.config = function(_, opts)
   vim.opt.runtimepath:append(parser_path)
-  print("ciao")
   require("nvim-treesitter.configs").setup(opts)
 end
 
@@ -23,6 +22,10 @@ M.opts = {
     "typescript",
     "vimdoc",
     "vim",
+    "regex",
+    "bash",
+    "markdown",
+    "markdown_inline",
   },
 
   auto_install = true,
