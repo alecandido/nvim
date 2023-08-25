@@ -5,6 +5,7 @@ local lsp_zero = require(parent .. ".lsp-zero")
 local nvim_cmp = require(parent .. ".nvim-cmp")
 local treesitter = require(parent .. ".treesitter")
 local trouble = require(parent .. ".trouble")
+local ufo = require(parent .. ".ufo")
 
 return {
   -- Symbols & related
@@ -112,6 +113,14 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
+  },
+
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = "kevinhwang91/promise-async",
+    init = ufo.init,
+    opts = ufo.opts,
+    keys = ufo.keys,
   },
 
   -- Bunch of syntaxes for those languages which I do not bother installing a language

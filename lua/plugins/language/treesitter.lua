@@ -1,7 +1,6 @@
 local M = {}
 
 M.opts = {
-  -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = {
     "c",
     "cpp",
@@ -16,8 +15,7 @@ M.opts = {
     "vim",
   },
 
-  -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-  auto_install = false,
+  auto_install = true,
 
   highlight = { enable = true },
   indent = { enable = true },
