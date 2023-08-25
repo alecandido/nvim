@@ -1,7 +1,15 @@
 local M = {}
 
+local parser_path = vim.fn.stdpath("cache") .. "/tree-sitter"
+
+M.config = function(_, opts)
+  vim.opt.runtimepath:append(parser_path)
+  print("ciao")
+  require("nvim-treesitter.configs").setup(opts)
+end
+
 M.opts = {
-  parser_install_dir = vim.fn.stdpath("cache") .. "/tree-sitter",
+  parser_install_dir = parser_path,
 
   ensure_installed = {
     "c",
@@ -18,6 +26,8 @@ M.opts = {
   },
 
   auto_install = true,
+
+  ignore_install = {},
 
   highlight = { enable = true },
   indent = { enable = true },

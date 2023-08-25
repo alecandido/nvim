@@ -3,7 +3,7 @@ local parent = ...
 local formatter = require(parent .. ".formatter")
 local lsp_zero = require(parent .. ".lsp-zero")
 local nvim_cmp = require(parent .. ".nvim-cmp")
-local treesitter = require(parent .. ".treesitter")
+local tree_sitter = require(parent .. ".tree-sitter")
 local trouble = require(parent .. ".trouble")
 local ufo = require(parent .. ".ufo")
 
@@ -15,7 +15,8 @@ return {
       "nvim-treesitter/nvim-treesitter-textobjects",
     },
     build = ":TSUpdate",
-    opts = treesitter.opts,
+    config = tree_sitter.config,
+    opts = tree_sitter.opts,
   },
   "simrat39/symbols-outline.nvim",
 
