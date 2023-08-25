@@ -19,28 +19,28 @@ M.keys = {
     function()
       require("ufo").openAllFolds()
     end,
-    desc = "Open all folds",
+    desc = "Open all folds but keep foldlevel",
   },
   {
     "zM",
     function()
       require("ufo").closeAllFolds()
     end,
-    desc = "Close all folds",
+    desc = "Close all folds but keep foldlevel",
   },
   {
     "zr",
     function()
       require("ufo").openFoldsExceptKinds()
     end,
-    desc = "Close all folds",
+    desc = "Open all folds but keep foldlevel",
   },
   {
     "zm",
     function()
-      require("ufo").closeFoldsWith()
+      require("ufo").closeFoldsWith(vim.v.count)
     end,
-    desc = "Close all folds",
+    desc = "Close the folds with a higher level than 'count'",
   },
 }
 
