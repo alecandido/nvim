@@ -46,23 +46,26 @@ M.opts = {
   textobjects = {
     select = {
       enable = true,
-      lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+      lookahead = true,
       keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ["aa"] = "@parameter.outer",
-        ["ia"] = "@parameter.inner",
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
+        ["aa"] = { query = "@parameter.outer", desc = "[a]round p[a]rameter" },
+        ["ia"] = { query = "@parameter.inner", desc = "[i]nnner p[a]rameter" },
+        ["af"] = { query = "@function.outer", desc = "[a]round [f]unction" },
+        ["if"] = { query = "@function.inner", desc = "[i]nnner [f]unction" },
+        ["ac"] = { query = "@class.outer", desc = "[a]round [c]lass" },
+        ["ic"] = { query = "@class.inner", desc = "[i]nnner [c]lass" },
+        ["aq"] = { query = "@comment.outer", desc = "Comment (or [q]omment)" },
+        ["as"] = { query = "@scope", query_group = "locals", desc = "[a]round language [s]cope" },
       },
     },
     move = {
       enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
+      set_jumps = true,
       goto_next_start = {
         ["]m"] = "@function.outer",
         ["]]"] = "@class.outer",
+        ["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
+        ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
       },
       goto_next_end = {
         ["]M"] = "@function.outer",
@@ -71,6 +74,8 @@ M.opts = {
       goto_previous_start = {
         ["[m"] = "@function.outer",
         ["[["] = "@class.outer",
+        ["[s"] = { query = "@scope", query_group = "locals", desc = "Previous scope" },
+        ["[z"] = { query = "@fold", query_group = "folds", desc = "Previous fold" },
       },
       goto_previous_end = {
         ["[M"] = "@function.outer",
@@ -80,10 +85,10 @@ M.opts = {
     swap = {
       enable = true,
       swap_next = {
-        ["<leader>a"] = "@parameter.inner",
+        ["<leader>sn"] = "@parameter.inner",
       },
       swap_previous = {
-        ["<leader>A"] = "@parameter.inner",
+        ["<leader>sp"] = "@parameter.inner",
       },
     },
   },
