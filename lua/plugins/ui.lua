@@ -67,7 +67,11 @@ return {
 
   {
     "rcarriga/nvim-notify",
-    opts = { background_colour = "#000000" },
+    opts = {
+      background_colour = "#000000",
+      fps = 1,
+      render = "compact",
+    },
   },
 
   {
