@@ -6,6 +6,7 @@ local barbar = require(parent .. ".barbar")
 local gitsigns = require(parent .. ".gitsigns")
 local headlines = require(parent .. ".headlines")
 local noice = require(parent .. ".noice")
+local notify = require(parent .. ".notify")
 local symbols_outline = require(parent .. ".symbols-outline")
 
 return {
@@ -67,11 +68,8 @@ return {
 
   {
     "rcarriga/nvim-notify",
-    opts = {
-      background_colour = "#000000",
-      fps = 1,
-      render = "compact",
-    },
+    opts = notify.opts,
+    keys = notify.keys,
   },
 
   {
