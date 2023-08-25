@@ -18,5 +18,3 @@ local opts = {
 for name, value in pairs(opts) do
   vim.o[name] = value
 end
-
-vim.cmd.colorscheme("nord")

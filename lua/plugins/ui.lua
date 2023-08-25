@@ -4,8 +4,9 @@ local parent = ...
 
 local barbar = require(parent .. ".barbar")
 local gitsigns = require(parent .. ".gitsigns")
-local symbols_outline = require(parent .. ".symbols-outline")
 local headlines = require(parent .. ".headlines")
+local noice = require(parent .. ".noice")
+local symbols_outline = require(parent .. ".symbols-outline")
 
 return {
   { "shaunsingh/nord.nvim", lazy = false, priority = 1000 },
@@ -66,27 +67,12 @@ return {
 
   {
     "folke/noice.nvim",
-    event = "VeryLazy",
     dependencies = {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
     },
-    opts = {
-      lsp = {
-        override = {
-          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-          ["vim.lsp.util.stylize_markdown"] = true,
-          ["cmp.entry.get_documentation"] = true,
-        },
-      },
-      presets = {
-        bottom_search = true,
-        command_palette = true,
-        long_message_to_split = true,
-        inc_rename = false,
-        lsp_doc_border = false,
-      },
-    },
+    opts = noice.opts,
+    event = noice.event,
   },
 
   {
