@@ -90,6 +90,11 @@ return {
   },
 
   {
+    "rcarriga/nvim-notify",
+    opts = { background_color = "#000000" },
+  },
+
+  {
     "simrat39/symbols-outline.nvim",
     keys = symbols_outline.keys,
     config = function(_, opts)
