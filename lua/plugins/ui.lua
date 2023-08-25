@@ -65,6 +65,15 @@ return {
   },
 
   {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+  },
+
+  {
     "simrat39/symbols-outline.nvim",
     keys = symbols_outline.keys,
     config = function(_, opts)
