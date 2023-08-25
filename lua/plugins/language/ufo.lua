@@ -1,7 +1,7 @@
 local M = {}
 
 M.init = function()
-  vim.o.foldcolumn = "1"
+  vim.o.foldcolumn = "0"
   vim.o.foldlevel = 99
   vim.o.foldlevelstart = 99
   vim.o.foldenable = true
@@ -24,7 +24,21 @@ M.keys = {
   {
     "zM",
     function()
-      require("ufo").openAllFolds()
+      require("ufo").closeAllFolds()
+    end,
+    desc = "Close all folds",
+  },
+  {
+    "zr",
+    function()
+      require("ufo").openFoldsExceptKinds()
+    end,
+    desc = "Close all folds",
+  },
+  {
+    "zm",
+    function()
+      require("ufo").closeFoldsWith()
     end,
     desc = "Close all folds",
   },
