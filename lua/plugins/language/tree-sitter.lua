@@ -3,7 +3,7 @@ local M = {}
 local parser_path = vim.fn.stdpath("cache") .. "/tree-sitter"
 
 M.config = function(_, opts)
-  vim.opt.runtimepath:append(parser_path)
+  vim.opt.runtimepath:prepend(parser_path)
   require("nvim-treesitter.configs").setup(opts)
 end
 
