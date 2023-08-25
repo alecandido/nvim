@@ -20,14 +20,6 @@ return {
 
   -- LSP Configuration
   {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      -- Useful status updates for LSP
-      { "j-hui/fidget.nvim", tag = "legacy", opts = {} },
-    },
-  },
-
-  {
     "VonHeikemen/lsp-zero.nvim",
     dependencies = {
       -- LSP Support

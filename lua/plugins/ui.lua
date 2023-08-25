@@ -66,6 +66,11 @@ return {
   },
 
   {
+    "rcarriga/nvim-notify",
+    opts = { background_colour = "#000000" },
+  },
+
+  {
     "folke/noice.nvim",
     dependencies = {
       "MunifTanjim/nui.nvim",
@@ -73,11 +78,6 @@ return {
     },
     opts = noice.opts,
     event = noice.event,
-  },
-
-  {
-    "rcarriga/nvim-notify",
-    opts = { background_color = "#000000" },
   },
 
   {

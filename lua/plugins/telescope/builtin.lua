@@ -9,11 +9,21 @@ end
 
 M.config = function(_, opts)
   require("telescope").setup(opts)
+  -- extensions coming from plugin that are not primarily telescope
+  require("telescope").load_extension("notify")
+  require("telescope").load_extension("noice")
 end
 
 M.cmd = "Telescope"
 
 M.keys = {
+  {
+    "<leader><space>",
+    function()
+      require("telescope.builtin").buffers()
+    end,
+    desc = "Jump to open buffer",
+  },
   {
     "<leader>f<space>",
     function()
@@ -27,13 +37,6 @@ M.keys = {
       require("telescope.builtin").find_files()
     end,
     desc = "[F]ind [F]iles",
-  },
-  {
-    "<leader>fr",
-    function()
-      require("telescope.builtin").buffers()
-    end,
-    desc = "[F]ind open buffe[R]",
   },
   {
     "<leader>gs",
