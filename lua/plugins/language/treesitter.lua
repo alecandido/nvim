@@ -1,6 +1,8 @@
 local M = {}
 
 M.opts = {
+  parser_install_dir = vim.fn.stdpath("cache") .. "/tree-sitter",
+
   ensure_installed = {
     "c",
     "cpp",
