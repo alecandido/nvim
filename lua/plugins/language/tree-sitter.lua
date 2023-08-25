@@ -62,9 +62,13 @@ M.opts = {
       enable = true,
       set_jumps = true,
       goto_next_start = {
-        ["]m"] = "@function.outer",
-        ["]]"] = "@class.outer",
-        ["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
+        ["]m"] = { query = "@function.outer", desc = "Next function ([m]ethod)" },
+        ["]]"] = { query = "@class.outer", desc = "Next class" },
+        ["]l"] = { query = "@loop.outer", desc = "Next [l]oop" },
+        ["]f"] = { query = "@conditional.outer", desc = "Next i[f]" },
+        ["]r"] = { query = "@return.outer", desc = "Next [r]eturn" },
+        ["]n"] = { query = "@number.inner", desc = "Next [n]umber" },
+        ["]s"] = { query = "@scope", query_group = "locals", desc = "Next [s]cope" },
         ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
       },
       goto_next_end = {
@@ -72,9 +76,13 @@ M.opts = {
         ["]["] = "@class.outer",
       },
       goto_previous_start = {
-        ["[m"] = "@function.outer",
-        ["[["] = "@class.outer",
-        ["[s"] = { query = "@scope", query_group = "locals", desc = "Previous scope" },
+        ["[m"] = { query = "@function.outer", desc = "Previous function ([m]ethod)" },
+        ["[["] = { query = "@class.outer", desc = "Previous class" },
+        ["]f"] = { query = "@conditional.outer", desc = "Previous i[f]" },
+        ["[l"] = { query = "@loop.outer", desc = "Previous [l]oop" },
+        ["[r"] = { query = "@return.outer", desc = "Previous [r]eturn" },
+        ["[n"] = { query = "@number.inner", desc = "Previous [n]umber" },
+        ["[s"] = { query = "@scope", query_group = "locals", desc = "Previous [s]cope" },
         ["[z"] = { query = "@fold", query_group = "folds", desc = "Previous fold" },
       },
       goto_previous_end = {
@@ -85,10 +93,10 @@ M.opts = {
     swap = {
       enable = true,
       swap_next = {
-        ["<leader>sn"] = "@parameter.inner",
+        ["<leader>sa"] = { query = "@parameter.inner", desc = "[S]wap with next [a]rgument" },
       },
       swap_previous = {
-        ["<leader>sp"] = "@parameter.inner",
+        ["<leader>sA"] = { query = "@parameter.inner", desc = "[S]wap with previous [a]rgument" },
       },
     },
   },
