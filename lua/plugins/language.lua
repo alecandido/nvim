@@ -3,7 +3,7 @@ local parent = ...
 local formatter = require(parent .. ".formatter")
 local lint = require(parent .. ".lint")
 local lsp_zero = require(parent .. ".lsp-zero")
-local nvim_cmp = require(parent .. ".nvim-cmp")
+local cmp = require(parent .. ".cmp")
 local tree_sitter = require(parent .. ".tree-sitter")
 local trouble = require(parent .. ".trouble")
 local ufo = require(parent .. ".ufo")
@@ -68,7 +68,7 @@ return {
       "uga-rosa/cmp-dictionary",
       "hrsh7th/cmp-cmdline",
     },
-    config = nvim_cmp.config,
+    config = cmp.config,
   },
 
   -- Formatting, complementary to the LSP (when not available)

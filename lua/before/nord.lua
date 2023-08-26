@@ -6,7 +6,7 @@ local aurora = { "#bf616a", "#d08770", "#ebcb8b", "#a3be8c", "#b48ead" }
 vim.api.nvim_create_autocmd("ColorScheme", {
   pattern = "nord",
   group = gid,
-  callback = function(ev)
+  callback = function(_)
     vim.api.nvim_set_hl(0, "Normal", {})
     -- Swap foreground and background color
     vim.api.nvim_set_hl(0, "Visual", { reverse = true })

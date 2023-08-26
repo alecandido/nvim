@@ -1,7 +1,7 @@
 local M = {}
 
 --  This function gets run when an LSP connects to a particular buffer.
-local function on_attach(client, bufnr)
+local function on_attach(_, bufnr)
   local maplib = require("lib.map")
 
   local function nmap(keys, func, desc)
