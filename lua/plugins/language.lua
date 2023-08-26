@@ -110,13 +110,6 @@ return {
   },
 
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-  },
-
-  {
     "kevinhwang91/nvim-ufo",
     dependencies = "kevinhwang91/promise-async",
     init = ufo.init,
