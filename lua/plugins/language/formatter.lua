@@ -14,6 +14,15 @@ M.config = function(_, opts)
   opts.filetype = {
     lua = { require("formatter.filetypes.lua").stylua },
     nix = { require("formatter.filetypes.nix").alejandra },
+    fennel = {
+      function()
+        return {
+          exe = "fnlfmt",
+          stdin = true,
+          args = {},
+        }
+      end,
+    },
 
     ["*"] = require("formatter.filetypes.any"),
   }

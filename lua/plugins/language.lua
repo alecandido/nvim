@@ -1,6 +1,7 @@
 local parent = ...
 
 local formatter = require(parent .. ".formatter")
+local lint = require(parent .. ".lint")
 local lsp_zero = require(parent .. ".lsp-zero")
 local nvim_cmp = require(parent .. ".nvim-cmp")
 local tree_sitter = require(parent .. ".tree-sitter")
@@ -100,13 +101,10 @@ return {
 
   {
     "mfussenegger/nvim-lint",
-    init = function()
-      vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-        callback = function()
-          require("lint").try_lint()
-        end,
-      })
-    end,
+    config = lint.config,
+    opts = lint.opts,
+    init = lint.init,
+    event = lint.event,
   },
 
   {
