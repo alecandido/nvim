@@ -45,7 +45,6 @@ local function on_attach(client, bufnr)
   end, "[W]orkspace [L]ist Folders")
 
   -- Format on save
-  print(vim.inspect(client))
   if
     not vim.tbl_contains(noformat, client.name)
     and client.supports_method("textDocument/formatting")

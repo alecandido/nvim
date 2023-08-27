@@ -65,6 +65,15 @@ return {
     config = cmp.config,
   },
 
+  {
+    "L3MON4D3/LuaSnip",
+    dependencies = { "rafamadriz/friendly-snippets" },
+    build = "make install_jsregexp",
+    init = function()
+      require("luasnip.loaders.from_vscode").lazy_load()
+    end,
+  },
+
   -- Formatting, complementary to the LSP (when not available)
   {
     "mhartington/formatter.nvim",
