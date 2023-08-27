@@ -54,6 +54,9 @@ local function on_attach(client, bufnr)
 end
 
 function M.config(_, opts)
+  -- ensure neodev is set up before
+  require("neodev").setup({})
+
   local lspconfig = require("lspconfig")
   local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
