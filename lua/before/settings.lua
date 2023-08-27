@@ -13,7 +13,6 @@ local opts = {
   breakindent = true,
   completeopt = "menuone,noselect",
   textwidth = 88,
-  spell = true,
 }
 
 for name, value in pairs(opts) do
