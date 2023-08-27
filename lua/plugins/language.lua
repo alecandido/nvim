@@ -1,9 +1,9 @@
 local parent = ...
 
+local cmp = require(parent .. ".cmp")
 local formatter = require(parent .. ".formatter")
 local lint = require(parent .. ".lint")
-local lsp_zero = require(parent .. ".lsp-zero")
-local cmp = require(parent .. ".cmp")
+local lspconfig = require(parent .. ".lspconfig")
 local tree_sitter = require(parent .. ".tree-sitter")
 local trouble = require(parent .. ".trouble")
 local ufo = require(parent .. ".ufo")
@@ -23,26 +23,17 @@ return {
 
   -- LSP Configuration
   {
-    "VonHeikemen/lsp-zero.nvim",
+    "neovim/nvim-lspconfig",
     dependencies = {
-      -- LSP Support
-      "neovim/nvim-lspconfig",
-
       -- Autocompletion
       "hrsh7th/nvim-cmp",
       "hrsh7th/cmp-nvim-lsp",
-      "L3MON4D3/LuaSnip",
 
       -- Autoformat
       "lukas-reineke/lsp-format.nvim",
-
-      -- Additional lua configuration for nvim
-      "folke/neodev.nvim",
     },
-    opts = {
-      servers = { "nil_ls", "lua_ls", "tsserver", "eslint", "pyright" },
-    },
-    config = lsp_zero.config,
+    opts = lspconfig.opts,
+    config = lspconfig.config,
   },
 
   -- Autocompletion

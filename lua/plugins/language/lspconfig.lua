@@ -1,5 +1,9 @@
 local M = {}
 
+M.opts = {
+  servers = { "nil_ls", "lua_ls", "tsserver", "eslint", "pyright" },
+}
+
 --  This function gets run when an LSP connects to a particular buffer.
 local function on_attach(_, bufnr)
   local maplib = require("lib.map")
@@ -44,18 +48,55 @@ local function on_attach(_, bufnr)
   -- end
 end
 
+local function nvim_lua_config()
+  local lspconfig = require("lspconfig")
+
+  local runtime_path = vim.split(package.path, ";")
+  table.insert(runtime_path, "lua/?.lua")
+  table.insert(runtime_path, "lua/?/init.lua")
+  lspconfig.lua_ls.setup({
+    settings = {
+      Lua = {
+        -- Disable telemetry
+        telemetry = { enable = false },
+        runtime = {
+          -- Tell the language server which version of Lua you're using
+          -- (most likely LuaJIT in the case of Neovim)
+          version = "LuaJIT",
+          path = runtime_path,
+        },
+        diagnostics = {
+          -- Get the language server to recognize the `vim` global
+          globals = { "vim" },
+        },
+        workspace = {
+          checkThirdParty = false,
+          library = {
+            -- Make the server aware of Neovim runtime files
+            vim.fn.expand("$VIMRUNTIME/lua"),
+            vim.fn.stdpath("config") .. "/lua",
+          },
+        },
+      },
+    },
+  })
+end
+
 function M.config(_, opts)
-  -- Setup neovim lua configuration
-  require("neodev").setup()
+  local lspconfig = require("lspconfig")
+  local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-  local lsp = require("lsp-zero").preset(opts)
+  -- lsp.setup_servers(opts.servers)
+  -- lsp.on_attach(on_attach)
+  for _, server_name in ipairs(opts.servers) do
+    lspconfig[server_name].setup({
+      capabilities = lsp_capabilities,
+      on_attach = on_attach,
+    })
+  end
 
-  lsp.setup_servers(opts.servers)
-  lsp.on_attach(on_attach)
-  lsp.setup()
-
-  -- (Optional) Configure lua language server for neovim
-  require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
+  -- Configure language servers
+  nvim_lua_config()
 end
 
 return M
