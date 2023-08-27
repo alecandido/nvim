@@ -2,11 +2,36 @@ local M = {}
 
 M.opts = {
   servers = {
-    nil_ls = {},
+    bashls = {},
+    cssls = {},
+    fortls = {},
+    golangci_lint_ls = {},
+    gopls = {},
+    hls = { filetypes = { "haskell", "lhaskell", "cabal" } },
+    ltex = { settings = { ltex = { language = "en-US" } } },
     lua_ls = {},
-    tsserver = {},
-    eslint = {},
+    metals = {},
+    nil_ls = {},
     pyright = {},
+    rome = {},
+    ruff_lsp = {},
+    rust_analyzer = {},
+    sqls = {},
+    svelte = {},
+    taplo = {},
+    texlab = {},
+    tsserver = {},
+    verible = {},
+    vhdl_ls = {},
+    yamlls = {
+      settings = {
+        yaml = {
+          schemas = {
+            ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+          },
+        },
+      },
+    },
   },
 }
 local noformat = { "lua_ls" }
