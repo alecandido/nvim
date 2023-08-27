@@ -1,6 +1,4 @@
-local function nmap(...)
-  vim.keymap.set("n", ...)
-end
+local nmap = require("lib.map").nmap
 
 -- Broader movements
 local big_steps = {
@@ -40,3 +38,4 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 -- Diagnostic keymaps
 nmap("[d", vim.diagnostic.goto_next, { desc = "Previous [D]iagnostic" })
 nmap("]d", vim.diagnostic.goto_prev, { desc = "Next [D]iagnostic" })
+nmap("god", vim.diagnostic.open_float, { desc = "Open [D]iagnostic" })
