@@ -15,19 +15,23 @@ for _, map in ipairs(big_steps) do
 end
 
 -- Insert new lines
-nmap("o", "o<Esc>")
-nmap("O", "O<Esc>")
+nmap("o", "o<Esc>", { desc = "Insert new line below" })
+nmap("O", "O<Esc>", { desc = "Insert new line above" })
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
 -- Jump in windows
 for _, c in ipairs({ "h", "j", "k", "l" }) do
-  nmap(string.format("<C-%s>", c), string.format("<C-w>%s", c))
+  nmap(
+    string.format("<C-%s>", c),
+    string.format("<C-w>%s", c),
+    { desc = "Move to adjacent window" }
+  )
 end
 
 -- Increment & decrement
-nmap("<A-a>", "<C-a>")
-nmap("<A-x>", "<C-x>")
+nmap("<A-a>", "<C-a>", { desc = "Increment" })
+nmap("<A-x>", "<C-x>", { desc = "Decrement" })
 
 -- Escape in terminal
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
