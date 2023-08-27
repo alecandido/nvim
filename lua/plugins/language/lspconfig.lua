@@ -3,9 +3,10 @@ local M = {}
 M.opts = {
   servers = { "nil_ls", "lua_ls", "tsserver", "eslint", "pyright" },
 }
+local noformat = { "lua_ls" }
 
 --  This function gets run when an LSP connects to a particular buffer.
-local function on_attach(_, bufnr)
+local function on_attach(client, bufnr)
   local maplib = require("lib.map")
 
   local function nmap(keys, func, desc)
@@ -38,14 +39,13 @@ local function on_attach(_, bufnr)
   end, "[W]orkspace [L]ist Folders")
 
   -- Format on save
-  -- if client.supports_method("textDocument/formatting") then
-  --   -- TODO: it might get in conflict with other formatters, which are usually
-  --   -- better, for the time being let's avoid
-  --   -- for debugging: it happened with lua, stylua + lua-language-server, that they
-  --   -- were going in loop on save
-  --
-  --   require("lsp-format").on_attach(client)
-  -- end
+  print(vim.inspect(client))
+  if
+    not vim.tbl_contains(noformat, client.name)
+    and client.supports_method("textDocument/formatting")
+  then
+    require("lsp-format").on_attach(client)
+  end
 end
 
 local function nvim_lua_config()
