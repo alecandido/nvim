@@ -1,7 +1,13 @@
 local M = {}
 
 M.opts = {
-  servers = { "nil_ls", "lua_ls", "tsserver", "eslint", "pyright" },
+  servers = {
+    nil_ls = {},
+    lua_ls = {},
+    tsserver = {},
+    eslint = {},
+    pyright = {},
+  },
 }
 local noformat = { "lua_ls" }
 
@@ -48,55 +54,16 @@ local function on_attach(client, bufnr)
   end
 end
 
-local function nvim_lua_config()
-  local lspconfig = require("lspconfig")
-
-  local runtime_path = vim.split(package.path, ";")
-  table.insert(runtime_path, "lua/?.lua")
-  table.insert(runtime_path, "lua/?/init.lua")
-  lspconfig.lua_ls.setup({
-    settings = {
-      Lua = {
-        -- Disable telemetry
-        telemetry = { enable = false },
-        runtime = {
-          -- Tell the language server which version of Lua you're using
-          -- (most likely LuaJIT in the case of Neovim)
-          version = "LuaJIT",
-          path = runtime_path,
-        },
-        diagnostics = {
-          -- Get the language server to recognize the `vim` global
-          globals = { "vim" },
-        },
-        workspace = {
-          checkThirdParty = false,
-          library = {
-            -- Make the server aware of Neovim runtime files
-            vim.fn.expand("$VIMRUNTIME/lua"),
-            vim.fn.stdpath("config") .. "/lua",
-          },
-        },
-      },
-    },
-  })
-end
-
 function M.config(_, opts)
   local lspconfig = require("lspconfig")
   local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-  -- lsp.setup_servers(opts.servers)
-  -- lsp.on_attach(on_attach)
-  for _, server_name in ipairs(opts.servers) do
-    lspconfig[server_name].setup({
+  for server_name, configs in pairs(opts.servers) do
+    lspconfig[server_name].setup(vim.tbl_deep_extend("keep", configs, {
       capabilities = lsp_capabilities,
       on_attach = on_attach,
-    })
+    }))
   end
-
-  -- Configure language servers
-  nvim_lua_config()
 end
 
 return M

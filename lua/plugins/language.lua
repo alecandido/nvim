@@ -31,6 +31,9 @@ return {
 
       -- Autoformat
       "lukas-reineke/lsp-format.nvim",
+
+      -- Neovim specific
+      "folke/neodev.nvim",
     },
     opts = lspconfig.opts,
     config = lspconfig.config,
