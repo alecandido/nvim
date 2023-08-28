@@ -1,6 +1,7 @@
 local parent = ...
 
 local cmp = require(parent .. ".cmp")
+local dap = require(parent .. ".dap")
 local formatter = require(parent .. ".formatter")
 local lint = require(parent .. ".lint")
 local lspconfig = require(parent .. ".lspconfig")
@@ -87,11 +88,21 @@ return {
   -- Debug
   {
     "mfussenegger/nvim-dap",
-    keys = {},
+    config = dap.config,
+    keys = dap.keys,
   },
   {
     "rcarriga/nvim-dap-ui",
     dependencies = { "mfussenegger/nvim-dap" },
+    keys = {
+      {
+        "<leader>du",
+        function()
+          require("dapui").toggle()
+        end,
+        desc = "Debug: See last session result.",
+      },
+    },
   },
 
   -- Diagnostics
