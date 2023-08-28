@@ -62,6 +62,9 @@ return {
       "hrsh7th/cmp-calc",
       "uga-rosa/cmp-dictionary",
       "hrsh7th/cmp-cmdline",
+
+      -- Autopair
+      "windwp/nvim-autopairs",
     },
     config = cmp.config,
   },
