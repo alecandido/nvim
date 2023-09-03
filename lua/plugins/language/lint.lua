@@ -1,5 +1,10 @@
 local M = {}
 
+local function get_cur_file_extension(bufnr)
+  bufnr = bufnr or 0
+  return "." .. vim.fn.fnamemodify(vim.api.nvim_buf_get_name(bufnr), ":e")
+end
+
 M.config = function(_, opts)
   require("lint").linters_by_ft = opts
 end
@@ -25,11 +30,6 @@ M.opts = {
   yaml = { "yamllint" },
 }
 
-local function get_cur_file_extension(bufnr)
-  bufnr = bufnr or 0
-  return "." .. vim.fn.fnamemodify(vim.api.nvim_buf_get_name(bufnr), ":e")
-end
-
 M.init = function()
   vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     callback = function()
@@ -45,7 +45,7 @@ M.init = function()
     "--ext",
     get_cur_file_extension,
     "--config",
-    "$XDG_CONFIG_HOME/vale/vale.ini",
+    os.getenv("XDG_CONFIG_HOME") .. "/vale/vale.ini",
   }
 end
 
