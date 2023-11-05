@@ -13,7 +13,6 @@ M.opts = {
     metals = {},
     nil_ls = {},
     pyright = {},
-    rome = {},
     ruff_lsp = {},
     rust_analyzer = {},
     -- sqls = {},
